@@ -1,6 +1,6 @@
 
 
-public class AeroportData {
+public class AirportData {
     
 
 }
