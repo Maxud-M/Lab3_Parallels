@@ -1,4 +1,5 @@
 import org.apache.spark.SparkConf;
+import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import scala.Tuple2;
@@ -8,7 +9,7 @@ public class SparkTask {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
         JavaRDD<String> distFile = sc.textFile(args[0]);
-        distFile.mapToPair(s->new Tuple2<>(s, 1));
+        JavaPairRDD<String, Long> distFile.mapToPair(s->new Tuple2<>(s, 1));
 
 
     }
