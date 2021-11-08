@@ -7,7 +7,7 @@ public class SparkTask {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
         JavaRDD<String> distFile = sc.textFile(args[0]);
-        distFile.mapToPair(s->)
+        distFile.mapToPair(s->new Tuple2<>())
 
 
     }
