@@ -6,7 +6,7 @@ public class SparkTask {
     public static void main(String[] args) {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
-        JavaRDD<String> distFile = sc.Te
+        JavaRDD<String> distFile = sc.textFile()
 
 
     }
