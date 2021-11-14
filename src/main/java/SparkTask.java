@@ -43,6 +43,6 @@ public class SparkTask {
             result += "percentCancelled: " + T._2.getPercentCancelled() + "\n";
             return result;
         });
-        res.saveAsTextFile("hdfs://user/evistix28/lab3_result");
+        res.saveAsTextFile("lab3_result");
     }
 }
