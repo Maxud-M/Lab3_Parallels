@@ -2,24 +2,12 @@
 
 public class FlightData {
 
-    private float maxDelay;
+    private float delay;
     private int cancelled;
-    private float percentCancelled;
-    private boolean considered;
-    public int countOfFlights;
-    public int countCancelled;
-
-    public void setConsidered() {
-        considered = true;
-    }
-
-    public boolean areConsidered() {
-        return considered;
-    }
 
 
-    public float getMaxDelay() {
-        return maxDelay;
+    public float getDelay() {
+        return delay;
     }
 
     public int getCancelled() {
@@ -27,12 +15,7 @@ public class FlightData {
     }
 
     FlightData(float delay, int cancelled) {
-        this.maxDelay = delay;
+        this.delay = delay;
         this.cancelled = cancelled;
-        if(maxDelay == 0F || cancelled == 1) {
-            countCancelled = 1;
-        }
-        considered = false;
-        countOfFlights = 1;
     }
 }

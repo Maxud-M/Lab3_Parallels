@@ -15,13 +15,8 @@ public class SparkTask {
                         FlightReader.parseFlightData(s)
                 )
         );
-        int count_of_flights;
-        int count_of_delays;
-        JavaPairRDD<Tuple2<String, String>, FlightData> resPairRDD = pairRDD.reduceByKey((value1, value2) -> {
-            float maxDelay = (value1.getMaxDelay() > value2.getMaxDelay())?value1.getMaxDelay():value2.getMaxDelay();
-            if()
-            float percent;
-        });
+       
+
 
 
 
