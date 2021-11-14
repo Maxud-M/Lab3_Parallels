@@ -4,6 +4,8 @@ import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import scala.Tuple2;
 
+import java.util.Map;
+
 public class SparkTask {
     public static void main(String[] args) {
         SparkConf conf = new SparkConf().setAppName("lab3");
@@ -20,11 +22,8 @@ public class SparkTask {
                 s -> new Tuple2<String, Integer>(s.split(",")[0], Integer.parseInt(s.split(",")[1])
                 )
         );
-        pairFlightsRDD.countByKey();
-        ResultData res = pairFlightsRDD.reduce((value1, value2) -> {
-            return value1;
-        });
-        //Map<String, Integer> pairAirportsRDD.collectAsMap();
+        Map<String, Integer> airportsMap = pairAirportsRDD.collectAsMap();
+        
 
 
     }
