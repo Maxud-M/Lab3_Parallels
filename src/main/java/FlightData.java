@@ -2,6 +2,11 @@
 
 public class FlightData {
 
-    float delay;
-    boolean cancelled;
+    private float delay;
+    private boolean cancelled;
+
+    FlightData(float delay, boolean cancelled) {
+        this.delay = delay;
+        this.cancelled = cancelled;
+    }
 }
