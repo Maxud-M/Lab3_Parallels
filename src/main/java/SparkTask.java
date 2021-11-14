@@ -23,7 +23,7 @@ public class SparkTask {
                 )
         );
         Map<String, Integer> airportsMap = pairAirportsRDD.collectAsMap();
-        
+        final 
 
 
     }
