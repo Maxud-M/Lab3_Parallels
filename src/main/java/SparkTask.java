@@ -12,7 +12,10 @@ public class SparkTask {
         JavaPairRDD<Tuple2<String, String>, FlightData> pairRDD = distFile.mapToPair(
                 s -> new Tuple2<Tuple2<String, String>, FlightData>(
                         new Tuple2<String, String>(s.split(",")[11], s.split(",")[14]),
-                        ));
+                        FlightReader.parseFlightData(s)
+                )
+        );
+        
 
 
 

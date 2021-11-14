@@ -5,7 +5,13 @@ public class FlightData {
     private float delay;
     private int cancelled;
 
-    public GetDelay()
+    public float getDelay() {
+        return delay;
+    }
+
+    public int getCancelled() {
+        return cancelled;
+    }
 
     FlightData(float delay, int cancelled) {
         this.delay = delay;
