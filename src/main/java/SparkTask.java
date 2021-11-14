@@ -15,7 +15,7 @@ public class SparkTask {
                         FlightReader.parseFlightData(s)
                 )
         );
-        
+        JavaPairRDD<Tuple2<String, String>, AirportPairData>
 
 
 
