@@ -21,6 +21,7 @@ public class SparkTask {
                         FlightReader.parseFlightData(s)
                 )
         );
+        pairFlightsRDD
         JavaPairRDD<Integer, String> pairAirportsRDD = airports.mapToPair(
                 s -> new Tuple2<Integer, String>(Integer.parseInt(s.split(",")[1]), s.split(",")[0])
         );
