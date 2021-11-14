@@ -14,8 +14,8 @@ public class SparkTask {
         JavaRDD<String> flights = sc.textFile(args[0]);
         JavaRDD<String> airports = sc.textFile(args[1]);
         JavaPairRDD<Tuple2<Integer, Integer>, FlightData> pairFlightsRDD = flights.mapToPair(
-                s -> new Tuple2<Tuple2<Integer, Integer>, FlightData>(
-                        new Tuple2<Integer, Integer>(
+                s -> new Tuple2<>(
+                        new Tuple2<>(
                                 Integer.parseInt(s.split(",")[11]),
                                 Integer.parseInt(s.split(",")[14])),
                         FlightReader.parseFlightData(s)
@@ -23,7 +23,7 @@ public class SparkTask {
         );
         pairFlightsRDD
         JavaPairRDD<Integer, String> pairAirportsRDD = airports.mapToPair(
-                s -> new Tuple2<Integer, String>(Integer.parseInt(s.split(",")[1]), s.split(",")[0])
+                s -> new Tuple2<>(Integer.parseInt(s.split(",")[1]), s.split(",")[0])
         );
         Map<Integer, String> airportsMap = pairAirportsRDD.collectAsMap();
         final Broadcast<Map<Integer, String>> airportsBroadcasted = sc.broadcast(airportsMap);
