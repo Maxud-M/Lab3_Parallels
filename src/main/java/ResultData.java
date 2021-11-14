@@ -14,4 +14,9 @@ public class ResultData {
         this.maxDelay = maxDelay;
         this.percentCancelled = percentCancelled;
     }
+
+    ResultData() {
+        maxDelay = 0F;
+        percentCancelled = 0F;
+    }
 }
