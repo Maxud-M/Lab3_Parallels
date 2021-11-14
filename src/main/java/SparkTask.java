@@ -26,21 +26,23 @@ public class SparkTask {
                 (a, b) -> {
                     a.add(b);
                     return a;
-                },
-                
-                )
+                    },
+                (a, b) -> {
+                    a.addAll(b);
+                    return a;
+                });
         JavaPairRDD<Integer, String> pairAirportsRDD = airports.mapToPair(
                 s -> new Tuple2<>(Integer.parseInt(s.split(",")[1]), s.split(",")[0])
         );
         Map<Integer, String> airportsMap = pairAirportsRDD.collectAsMap();
         final Broadcast<Map<Integer, String>> airportsBroadcasted = sc.broadcast(airportsMap);
-        JavaRDD<String> res = pairFlightsRDD.map(T -> {
+        JavaRDD<String> res = resultData.map(T -> {
             Map<Integer, String> airportsData = airportsBroadcasted.value();
             String result = airportsData.get(T._1._1) + " -> " + airportsData.get(T._1._2) + ":\n";
-            result += "maxDelay: \n";
-            result += "percentCancelled: \n";
+            result += "maxDelay: " + T._2.getMaxDelay() + "\n";
+            result += "percentCancelled: " + T._2.getPercentCancelled() + "\n";
             return result;
         });
-        res.saveAsTextFile("hdfs://user/evistix28");
+        res.saveAsTextFile("hdfs://user/evistix28/lab3_result");
     }
 }
