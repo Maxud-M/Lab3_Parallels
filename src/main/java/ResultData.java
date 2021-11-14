@@ -44,7 +44,7 @@ public class ResultData implements Serializable {
         if(flightData.getDelay() == 0F || flightData.getCancelled() == 1F) {
             countOfCancelledFlights++;
         }
-        percentCancelled = countOfCancelledFlights / countOfFlights;
+        percentCancelled = countOfCancelledFlights / (float)countOfFlights;
     }
 
     public void addAll(ResultData resultData) {
@@ -53,6 +53,6 @@ public class ResultData implements Serializable {
         }
         countOfFlights += resultData.getCountOfFlights();
         countOfCancelledFlights += resultData.getCountOfCancelledFlights();
-        percentCancelled = countOfCancelledFlights / countOfFlights;
+        percentCancelled = countOfCancelledFlights / (float)countOfFlights;
     }
 }
