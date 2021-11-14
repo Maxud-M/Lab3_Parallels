@@ -1,2 +1,4 @@
-package PACKAGE_NAME;public class ResultData {
+public class ResultData {
+    private float maxDelay;
+    private float percent;
 }
