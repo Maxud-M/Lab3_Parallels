@@ -1,4 +1,6 @@
-public class ResultData implements Serealizable{
+import java.io.Serializable;
+
+public class ResultData implements Serializable {
     private float maxDelay;
     private float percentCancelled;
     private int countOfFlights;
