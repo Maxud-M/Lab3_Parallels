@@ -1,4 +1,4 @@
-public class ResultData {
+public class ResultData implements Serealizable{
     private float maxDelay;
     private float percentCancelled;
     private int countOfFlights;
