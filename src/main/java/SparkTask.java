@@ -13,24 +13,26 @@ public class SparkTask {
         JavaSparkContext sc = new JavaSparkContext(conf);
         JavaRDD<String> flights = sc.textFile(args[0]);
         JavaRDD<String> airports = sc.textFile(args[1]);
-        JavaPairRDD<Tuple2<String, String>, FlightData> pairFlightsRDD = flights.mapToPair(
-                s -> new Tuple2<Tuple2<String, String>, FlightData>(
-                        new Tuple2<String, String>(s.split(",")[11], s.split(",")[14]),
+        JavaPairRDD<Tuple2<Integer, Integer>, FlightData> pairFlightsRDD = flights.mapToPair(
+                s -> new Tuple2<Tuple2<Integer, Integer>, FlightData>(
+                        new Tuple2<Integer, Integer>(
+                                Integer.parseInt(s.split(",")[11]),
+                                Integer.parseInt(s.split(",")[14])),
                         FlightReader.parseFlightData(s)
                 )
         );
-        JavaPairRDD<String, Integer> pairAirportsRDD = airports.mapToPair(
-                s -> new Tuple2<String, Integer>(s.split(",")[0], Integer.parseInt(s.split(",")[1])
-                )
+        JavaPairRDD<Integer, String> pairAirportsRDD = airports.mapToPair(
+                s -> new Tuple2<Integer, String>(Integer.parseInt(s.split(",")[1]), s.split(",")[0])
         );
-        Map<String, Integer> airportsMap = pairAirportsRDD.collectAsMap();
-        final Broadcast<Map<String, Integer>> airportsBroadcasted = sc.broadcast(airportsMap);
+        Map<Integer, String> airportsMap = pairAirportsRDD.collectAsMap();
+        final Broadcast<Map<Integer, String>> airportsBroadcasted = sc.broadcast(airportsMap);
         JavaRDD<String> res = pairFlightsRDD.map(T -> {
-            Map<String, Integer> airoportsData = airportsBroadcasted.value();
-            
-
+            Map<Integer, String> airportsData = airportsBroadcasted.value();
+            String result = airportsData.get(T._1._1) + " -> " + airportsData.get(T._1._2) + ":\n";
+            result += "maxDelay: \n";
+            result += "percentCancelled: \n";
+            return result;
         });
-
-
+        res.saveAsTextFile("hdfs://user/evistix28");
     }
 }
