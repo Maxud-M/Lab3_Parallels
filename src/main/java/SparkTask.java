@@ -9,9 +9,7 @@ public class SparkTask {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
         JavaRDD<String> distFile = sc.textFile(args[0]);
-        distFile.
         JavaPairRDD<String, Long> pairRDD = distFile.mapToPair(s -> new Tuple2<String, Long>(s, 1L));
-        New shfjdshfjdshgjkhg
 
 
 
