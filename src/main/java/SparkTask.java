@@ -20,6 +20,7 @@ public class SparkTask {
                 s -> new Tuple2<String, Integer>(s.split(",")[0], Integer.parseInt(s.split(",")[1])
                 )
         );
+        //Map<String, Integer> pairAirportsRDD.collectAsMap();
 
 
     }
