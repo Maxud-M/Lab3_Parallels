@@ -9,7 +9,7 @@ public class SparkTask {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
         JavaRDD<String> distFile = sc.textFile(args[0]);
-        JavaPairRDD<Tuple2<String, String>, Float> pairRDD = distFile.mapToPair(
+        JavaPairRDD<Tuple2<String, String>, AirportData> pairRDD = distFile.mapToPair(
                 s -> new Tuple2<Tuple2<String, String>, Float>(
                         new Tuple2<String, String>(s.split(",")[11], s.split(",")[14]), 1F));
 
