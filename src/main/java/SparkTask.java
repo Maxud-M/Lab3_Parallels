@@ -21,6 +21,9 @@ public class SparkTask {
                 )
         );
         pairFlightsRDD.countByKey();
+        pairAirportsRDD.reduce((value1, value2) -> {
+            return value1;
+        });
         //Map<String, Integer> pairAirportsRDD.collectAsMap();
 
 
