@@ -15,7 +15,7 @@ public class SparkTask {
                         FlightReader.parseFlightData(s)
                 )
         );
-        pairRDD.reduce()
+        pairRDD
 
 
 
