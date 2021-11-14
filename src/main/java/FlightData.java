@@ -5,7 +5,7 @@ public class FlightData {
     private float delay;
     private int cancelled;
     private float percentCancelled;
-    
+
 
     public float getDelay() {
         return delay;
