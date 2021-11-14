@@ -17,7 +17,7 @@ public class SparkTask {
         );
         JavaPairRDD<Tuple2<String, String>, AirportPairData> resPairRDD = pairRDD.reduceByKey((value1, value2) -> {
             float max_delay = (value1.getDelay() > value2.getDelay())?value1.getDelay():value2.getDelay();
-            float
+            float percent =     
 
         })
 
