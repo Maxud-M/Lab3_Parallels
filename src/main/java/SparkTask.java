@@ -11,8 +11,8 @@ public class SparkTask {
     public static void main(String[] args) {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
-        JavaRDD<String> flights = sc.textFile("~/Lab3_Parallels/664600583_T_ONTIME_sample.csv");
-        JavaRDD<String> airports = sc.textFile("~/Lab3_Parallels/L_AIRPORT_ID.csv");
+        JavaRDD<String> flights = sc.textFile("/user/evistix28/664600583_T_ONTIME_sample.csv");
+        JavaRDD<String> airports = sc.textFile("/user/evistix28/L_AIRPORT_ID.csv");
         JavaPairRDD<Tuple2<Integer, Integer>, FlightData> pairFlightsRDD = flights.mapToPair(
                 s -> new Tuple2<>(
                         new Tuple2<>(
@@ -43,6 +43,6 @@ public class SparkTask {
             result += "percentCancelled: " + T._2.getPercentCancelled() + "\n";
             return result;
         });
-        res.saveAsTextFile("lab3_result");
+        res.saveAsTextFile("/user/evistix28/lab3_result");
     }
 }
