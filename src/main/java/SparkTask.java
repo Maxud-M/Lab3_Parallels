@@ -32,7 +32,9 @@ public class SparkTask {
                     return a;
                 });
         JavaPairRDD<Integer, String> pairAirportsRDD = airports.mapToPair(
-                s -> new Tuple2<>(Integer.parseInt(s.split(",")[1]), s.split(",")[0])
+                s -> new Tuple2<>(
+                        Integer.parseInt(s.split(",", 2)[0].replaceAll("\"", "")),
+                        s.split(",", 2)[1].replaceAll("\"", ""))
         );
         Map<Integer, String> airportsMap = pairAirportsRDD.collectAsMap();
         final Broadcast<Map<Integer, String>> airportsBroadcasted = sc.broadcast(airportsMap);
