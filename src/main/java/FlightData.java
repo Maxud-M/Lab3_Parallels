@@ -2,13 +2,13 @@
 
 public class FlightData {
 
-    private float delay;
+    private float maxDelay;
     private int cancelled;
     private float percentCancelled;
 
 
-    public float getDelay() {
-        return delay;
+    public float getMaxDelay() {
+        return maxDelay;
     }
 
     public int getCancelled() {
@@ -16,7 +16,7 @@ public class FlightData {
     }
 
     FlightData(float delay, int cancelled) {
-        this.delay = delay;
+        this.maxDelay = delay;
         this.cancelled = cancelled;
     }
 }
