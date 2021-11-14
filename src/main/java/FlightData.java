@@ -5,6 +5,7 @@ public class FlightData {
     private float maxDelay;
     private int cancelled;
     private float percentCancelled;
+    private boolean 
 
 
     public float getMaxDelay() {
