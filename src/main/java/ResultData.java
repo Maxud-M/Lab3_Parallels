@@ -41,7 +41,7 @@ public class ResultData implements Serializable {
             maxDelay = flightData.getDelay();
         }
         countOfFlights++;
-        if(flightData.getDelay() == 0F || flightData.getCancelled() == 1) {
+        if(flightData.getDelay() == 0F || flightData.getCancelled() == 1F) {
             countOfCancelledFlights++;
         }
         percentCancelled = countOfCancelledFlights / countOfFlights;
