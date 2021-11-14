@@ -2,6 +2,8 @@
 
 public class FlightData {
 
+    private float max_delay;
+    private float 
     private float delay;
     private int cancelled;
 
