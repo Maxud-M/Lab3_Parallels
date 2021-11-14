@@ -25,7 +25,7 @@ public class SparkTask {
         );
         Map<String, Integer> airportsMap = pairAirportsRDD.collectAsMap();
         final Broadcast<Map<String, Integer>> airportsBroadcasted = sc.broadcast(airportsMap);
-        
+        pairFlightsRDD.map()
 
 
     }
