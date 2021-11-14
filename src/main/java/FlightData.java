@@ -1,6 +1,7 @@
 
 
-public class AirportData {
+public class FlightData {
 
-
+    float delay;
+    boolean cancelled;
 }
