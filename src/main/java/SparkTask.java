@@ -12,7 +12,7 @@ public class SparkTask {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
         JavaRDD<String> flights = sc.textFile("~/Lab3_Parallels/664600583_T_ONTIME_sample.csv");
-        JavaRDD<String> airports = sc.textFile();
+        JavaRDD<String> airports = sc.textFile("~/Lab3_Parallels/L_AIRPORT_ID.csv");
         JavaPairRDD<Tuple2<Integer, Integer>, FlightData> pairFlightsRDD = flights.mapToPair(
                 s -> new Tuple2<>(
                         new Tuple2<>(
