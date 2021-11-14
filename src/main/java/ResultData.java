@@ -45,5 +45,12 @@ public class ResultData {
         percentCancelled = countOfCancelledFlights / countOfFlights;
     }
 
-    public void
+    public void addAll(ResultData resultData) {
+        if(resultData.getMaxDelay() > maxDelay) {
+            maxDelay = resultData.getMaxDelay();
+        }
+        countOfFlights += resultData.getCountOfFlights();
+        countOfCancelledFlights += resultData.getCountOfCancelledFlights();
+        percentCancelled = countOfCancelledFlights / countOfFlights;
+    }
 }
