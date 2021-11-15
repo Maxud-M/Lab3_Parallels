@@ -30,7 +30,7 @@ public class ResultData implements Serializable {
     }
 
     ResultData() {
-        maxDelay = 0F;
+        maxDelay = Constants.ZERO_FLOAT;
         countOfCancelledFlights = 0;
         countOfFlights = 0;
     }
@@ -40,7 +40,7 @@ public class ResultData implements Serializable {
             maxDelay = flightData.getDelay();
         }
         countOfFlights++;
-        if (flightData.getDelay() < 0F || flightData.getCancelled() == 1F) {
+        if (flightData.getDelay() < Constants.ZERO_FLOAT || flightData.getCancelled() == Constants.ARE_CANCELLED) {
             countOfCancelledFlights++;
         }
     }

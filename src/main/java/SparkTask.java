@@ -36,16 +36,16 @@ public class SparkTask {
                 });
         JavaPairRDD<Integer, String> pairAirportsRDD = airports.mapToPair(
                 s -> new Tuple2<>(
-                        Integer.parseInt(s.split(",", 2)[0].replaceAll("\"", "")),
-                        s.split(",", 2)[1].replaceAll("\"", ""))
+                        Integer.parseInt(s.split(Constants.DELIMITER, 2)[0].replaceAll(Constants.QUOTE, Constants.EMPTY_STRING)),
+                        s.split(Constants.DELIMITER, 2)[1].replaceAll(Constants.QUOTE, Constants.EMPTY_STRING))
         );
         Map<Integer, String> airportsMap = pairAirportsRDD.collectAsMap();
         final Broadcast<Map<Integer, String>> airportsBroadcasted = sc.broadcast(airportsMap);
         JavaRDD<String> res = resultData.map(T -> {
             Map<Integer, String> airportsData = airportsBroadcasted.value();
-            String result = airportsData.get(T._1._1) + " -> " + airportsData.get(T._1._2) + ":\n";
-            result += "maxDelay: " + T._2.getMaxDelay() + "\n";
-            result += "percentCancelled: " + T._2.calculatePercentCancelled() + "\n";
+            String result = airportsData.get(T._1._1) + " -> " + airportsData.get(T._1._2) + ":" + Constants.NEW_LINE_CHARACTER;
+            result += "maxDelay: " + T._2.getMaxDelay() + Constants.NEW_LINE_CHARACTER;
+            result += "percentCancelled: " + T._2.calculatePercentCancelled() + Constants.NEW_LINE_CHARACTER;
             return result;
         });
         res.saveAsTextFile("/user/evistix28/lab3_result");
