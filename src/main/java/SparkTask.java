@@ -10,7 +10,7 @@ import java.util.Map;
 public class SparkTask {
 
     public static final int ORIGIN_AIRPORT_ID_POS = 11;
-    public static final int DEST_AIRPORT_ID_POS = 14
+    public static final int DEST_AIRPORT_ID_POS = 14;
     public static void main(String[] args) {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
@@ -19,8 +19,8 @@ public class SparkTask {
         JavaPairRDD<Tuple2<Integer, Integer>, FlightData> pairFlightsRDD = flights.mapToPair(
                 s -> new Tuple2<>(
                         new Tuple2<>(
-                                Integer.parseInt(s.split(",")[ORIGIN_AIRPORT_ID_POS]),
-                                Integer.parseInt(s.split(",")[DEST_AIRPORT_ID_POS])),
+                                Integer.parseInt(s.split(Constants.DELIMITER)[ORIGIN_AIRPORT_ID_POS]),
+                                Integer.parseInt(s.split(Constants.DELIMITER)[DEST_AIRPORT_ID_POS])),
                         FlightReader.parseFlightData(s)
                 )
         );
