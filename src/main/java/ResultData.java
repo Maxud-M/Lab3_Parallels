@@ -2,9 +2,10 @@ import java.io.Serializable;
 
 public class ResultData implements Serializable {
     private float maxDelay;
-    private float percentCancelled;
     private int countOfFlights;
     private int countOfCancelledFlights;
+
+
 
 
 
@@ -20,31 +21,28 @@ public class ResultData implements Serializable {
         return maxDelay;
     }
 
-    public float getPercentCancelled() {
+    public float percentCancelled() {
         return percentCancelled;
     }
 
-    ResultData(float maxDelay, float percentCancelled) {
+    ResultData(float maxDelay) {
         this.maxDelay = maxDelay;
-        this.percentCancelled = percentCancelled;
     }
 
     ResultData() {
         maxDelay = 0F;
-        percentCancelled = 0F;
         countOfCancelledFlights = 0;
         countOfFlights = 0;
     }
 
     public void add(FlightData flightData) {
-        if(flightData.getDelay() > maxDelay) {
+        if (flightData.getDelay() > maxDelay) {
             maxDelay = flightData.getDelay();
         }
         countOfFlights++;
-        if(flightData.getDelay() != 0F || flightData.getCancelled() == 1F) {
+        if (flightData.getDelay() < 0F || flightData.getCancelled() == 1F) {
             countOfCancelledFlights++;
         }
-        percentCancelled = countOfCancelledFlights / (float)countOfFlights;
     }
 
     public void addAll(ResultData resultData) {
@@ -53,6 +51,5 @@ public class ResultData implements Serializable {
         }
         countOfFlights += resultData.getCountOfFlights();
         countOfCancelledFlights += resultData.getCountOfCancelledFlights();
-        percentCancelled = countOfCancelledFlights / (float)countOfFlights;
     }
 }
