@@ -4,7 +4,7 @@ public class FlightReader {
 
     public static final int FLIGHT_DELAY_POS = 17;
     public static final int FLIGHT_CANCELLED_POS = 19;
-    public static final String DELIMETER
+    public static final String DELIMITER
 
     static public FlightData parseFlightData(String inputData) {
         String[] data = inputData.split(",");
