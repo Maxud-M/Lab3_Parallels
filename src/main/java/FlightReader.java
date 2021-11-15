@@ -2,7 +2,7 @@
 
 public class FlightReader {
 
-    public static final int DELAY
+    public static final int FLIGHT_DELAY_POS = 17;
 
     static public FlightData parseFlightData(String inputData) {
         String[] data = inputData.split(",");
