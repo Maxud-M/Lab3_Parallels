@@ -21,8 +21,8 @@ public class ResultData implements Serializable {
         return maxDelay;
     }
 
-    public float percentCancelled() {
-        return percentCancelled;
+    public float calculatePercentCancelled() {
+        return countOfCancelledFlights / (float)countOfFlights;
     }
 
     ResultData(float maxDelay) {

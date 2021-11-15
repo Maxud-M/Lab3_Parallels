@@ -42,7 +42,7 @@ public class SparkTask {
             Map<Integer, String> airportsData = airportsBroadcasted.value();
             String result = airportsData.get(T._1._1) + " -> " + airportsData.get(T._1._2) + ":\n";
             result += "maxDelay: " + T._2.getMaxDelay() + "\n";
-            result += "percentCancelled: " + T._2.getPercentCancelled() + "\n";
+            result += "percentCancelled: " + T._2.calculatePercentCancelled() + "\n";
             return result;
         });
         res.saveAsTextFile("/user/evistix28/lab3_result");
