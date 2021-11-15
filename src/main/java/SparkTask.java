@@ -8,6 +8,8 @@ import scala.Tuple2;
 import java.util.Map;
 
 public class SparkTask {
+
+    public static final int ORIGIN
     public static void main(String[] args) {
         SparkConf conf = new SparkConf().setAppName("lab3");
         JavaSparkContext sc = new JavaSparkContext(conf);
